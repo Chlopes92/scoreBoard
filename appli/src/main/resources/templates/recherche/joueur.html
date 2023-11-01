@@ -1,0 +1,11 @@
+<th:block th:include="_communs/header.html"></th:block>
+
+<h2>Résultats de la recherche de <code th:text="${word}"></code></h2>
+<ul class="list-group">
+    <li class="list-group-item active"th:text="${'Joueurs contenant le mot ' + word}"></li>
+    <li class="list-group-item" th:each="joueur: ${joueurs}">
+        <!-- <span th:text="${joueur.id + ' - ' + joueur.nickname + ' (de ' + jeu.min + ' à ' + jeu.max + ' joueurs)'}"></span> -->
+    </li>
+</ul>
+
+<th:block th:include="_communs/footer.html"></th:block>

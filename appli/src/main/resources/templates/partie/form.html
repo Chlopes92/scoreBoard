@@ -1,0 +1,32 @@
+<th:block th:include="_communs/header.html"></th:block>
+    <h1 class="alert alert-primary text-center">Ajouter une partie</h1>
+
+    <form  method="post">
+        <div class="form-group">
+            <label for="start_date">Date</label>
+            <input type="date" id="start_date" name="start_date" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="">Jeu</label>
+            <select name="game_id" id="game_id" class="form-control form-control">
+                <option value=""></option>
+                <option th:each="jeu: ${jeux}" th:value="${jeu.id}" th:text="${jeu.title}"></option>
+            </select>
+        </div>
+
+        <div class="d-flex mt-3 justify-content-between">
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-save"></i> Enregistrer
+                <!-- <span th:text="${partie.id} ? 'Modifier' : 'Créeer'"></span> -->
+            </button>
+            <button type="reset" class="btn btn-warning">
+                <i class="fa fa-eraser"></i> Effacer
+            </button>
+            <a th:href="@{/parties}" class="btn btn-danger">
+                <i class="fa fa-reply"></i> Retour
+            </a>
+        </div>
+    </form>
+
+    <th:block th:include="_communs/footer.html"></th:block>   

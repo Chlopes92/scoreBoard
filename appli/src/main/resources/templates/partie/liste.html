@@ -1,0 +1,46 @@
+<th:block th:include="_communs/header.html"></th:block>
+
+<h2 class="d-flex justify-content-between mt-3">
+    Liste des parties
+    <a href="/partie/ajouter" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th><i class="fa fa-cogs"></i></th>
+            <th>ID</th>
+            <th>Jeu</th>
+            <th>Date</th>
+            <th>Participants</th>
+            <th>Vainqueur</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:if ="${parties.empty}">
+            <td colspan="4"> Aucune partie enregistrée </td>
+        </tr>
+
+        <tr th:each="partie: ${parties}">
+            <td class="d-flex justify-content-between">
+                <a th:href="@{/partie/{id}/fiche(id=${partie.id})}"><i class="fa fa-eye"></i></a>
+                <a th:href="@{/partie/{id}/ajouter(id=${partie.id})}"><i class="fa fa-edit text-warning"></i></a>
+                <a th:href="@{/partie/{id}/supprimer(id=${partie.id})}"><i class="fa fa-trash text-danger"></i></a>
+            </td>
+            <td th:text="${partie.id}"></td>
+            <td th:text="${partie.game}"></td>
+            <td th:text="${partie.startDate}"></td>
+            <td>
+                <ul>
+                    <li th:each="joueur : ${partie.players}" th:text="${joueur}"></li>
+                </ul>
+            </td>
+            <td>
+                <a th:href="@{/partie/{id}/choisir-vainqueur(id=${partie.id})}"><span th:text="${partie.winner}"></span></a>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+
+<th:block th:include="_communs/footer.html"></th:block>

@@ -1,0 +1,29 @@
+<th:block th:include="_communs/header.html"></th:block>
+<body class="container">
+    <h1 class="alert alert-primary text-center">Confirmer la suppression </h1>
+
+    <!-- Afficher les informations du joueur -->
+    <ul class="list-group">
+        <li class="list-group-item d-flex">
+            <div class="col">Identifiant</div>
+            <div class="col" th:text="${jeu.id}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Titre</div>
+            <div class="col" th:text="${jeu.title}"></div>
+        </li>
+        <li class="list-group-item d-flex">
+            <div class="col">Nb de joueurs</div>
+            <div class="col" th:text="${jeu.min + ' - ' + jeu.max}"></div>
+        </li>
+        
+    </ul>
+    <form method="post">
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-success">Confirmer</button>
+            <a href="/jeux" class="btn btn-danger">Annuler</a>
+        </div>
+    </form>
+</body>
+
+</html>
